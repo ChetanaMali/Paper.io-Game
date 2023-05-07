@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LineRender : MonoBehaviour
+public class BotLineRenderer : MonoBehaviour
 {
     LineRenderer m_Line;
     [SerializeField] GameObject m_Player;
@@ -13,9 +13,9 @@ public class LineRender : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
         m_Line = GetComponent<LineRenderer>();
-        m_Line.positionCount = 1;
+        m_Line.positionCount = 0;
         previousPosiotion = m_Player.transform.position;
     }
 
@@ -27,8 +27,7 @@ public class LineRender : MonoBehaviour
     }
     void LineDraw()
     {
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D) ||
-            Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.RightArrow))
+        if(GameManager.instance.m_IsBotMove)
         {
             Vector3 currentPosition = m_Player.transform.position;
             currentPosition.y = 0.1f;
@@ -43,23 +42,24 @@ public class LineRender : MonoBehaviour
                     m_Line.positionCount++;
                     m_Line.SetPosition(m_Line.positionCount - 1, currentPosition);
                 }
-                m_Line.SetColors(Color.red, Color.red);
+                m_Line.SetColors(Color.blue, Color.blue);
                 previousPosiotion = currentPosition;
             }
         }
+        
     }
-     void SetColliderToLine()
+    void SetColliderToLine()
     {
-       MeshCollider collider = GetComponent<MeshCollider>(); //get compponet of mesh collider
+        MeshCollider collider = GetComponent<MeshCollider>(); //get compponet of mesh collider
 
-        if(collider == null)                    // if collider is null then add
+        if (collider == null)                    // if collider is null then add
         {
             collider = gameObject.AddComponent<MeshCollider>();
         }
 
         Mesh mesh = new Mesh();     //create new mesh
-        m_Line.BakeMesh(mesh);      
+        m_Line.BakeMesh(mesh);
         collider.sharedMesh = mesh;
-        
+
     }
 }

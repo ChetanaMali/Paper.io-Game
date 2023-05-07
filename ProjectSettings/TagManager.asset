@@ -3,22 +3,29 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Bot
+  - PlayerLine
+  - Bot2
+  - Bot3
+  - PlayerLine2
+  - PlayerLine3
+  - PlayerLine1
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Bot1
+  - PlayerLine
+  - Player
+  - PlayerLine1
+  - PlayerLine2
+  - PlayerLine3
+  - Bot2
+  - Bot3
   - 
   - 
   - 
