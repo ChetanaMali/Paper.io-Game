@@ -40,24 +40,27 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        PlayerMovement();
+       
         //LineDraw();
     }
-    
+    private void FixedUpdate()
+    {
+        PlayerMovement();
+    }
+
     void PlayerMovement()
     {
         //Input
-        x = Input.GetAxisRaw("Vertical") * m_MovementSpeed * Time.deltaTime; 
-        z = Input.GetAxisRaw("Horizontal") * m_MovementSpeed * Time.deltaTime;
-        Vector3 playerInput = new Vector3(z,0.5f,x);
+        float hor = Input.GetAxisRaw("Horizontal") * m_TurnSpeed * Time.deltaTime; 
+        float ver = Input.GetAxisRaw("Vertical") * m_MovementSpeed * Time.deltaTime;
         //Player Movement
         //m_CharacterController.Move(transform.forward * x);
-        float turnvalue = Input.GetAxisRaw("Horizontal") * m_MovementSpeed * Time.deltaTime;
-        transform.Rotate(Vector3.up * m_TurnSpeed);
-        m_Rigidbody.MovePosition(transform.position + playerInput);
+        m_Rigidbody.velocity = transform.forward * ver;
+        transform.Rotate(transform.up * hor);
+        //float turnvalue = Input.GetAxisRaw("Horizontal") * m_MovementSpeed * Time.deltaTime;
+        //transform.Rotate(Vector3.up * m_TurnSpeed);
+        //m_Rigidbody.MovePosition(transform.position + playerInput);
 
-        Quaternion deltaRotation = Quaternion.Euler(m_EulerAngleVelocity * Time.fixedDeltaTime);
-        //m_Rigidbody.MoveRotation(m_Rigidbody.rotation * deltaRotation);
     }
     /*void LineDraw()
     {

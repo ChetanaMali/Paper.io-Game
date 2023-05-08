@@ -42,7 +42,7 @@ public class BotLineRenderer : MonoBehaviour
                     m_Line.positionCount++;
                     m_Line.SetPosition(m_Line.positionCount - 1, currentPosition);
                 }
-                m_Line.SetColors(Color.blue, Color.blue);
+                //m_Line.SetColors(Color.blue, Color.blue);
                 previousPosiotion = currentPosition;
             }
         }

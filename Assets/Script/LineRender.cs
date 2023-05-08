@@ -43,7 +43,7 @@ public class LineRender : MonoBehaviour
                     m_Line.positionCount++;
                     m_Line.SetPosition(m_Line.positionCount - 1, currentPosition);
                 }
-                m_Line.SetColors(Color.red, Color.red);
+                //m_Line.SetColors(Color.red, Color.red);
                 previousPosiotion = currentPosition;
             }
         }
