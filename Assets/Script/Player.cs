@@ -20,6 +20,10 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject m_BotLine1;
     [SerializeField] GameObject m_BotLine2;
     [SerializeField] GameObject m_BotLine3;
+    [Header("BotsCyli")]
+    [SerializeField] GameObject m_Bcylinder1;
+    [SerializeField] GameObject m_Bcylinder2;
+    [SerializeField] GameObject m_Bcylinder3;
 
     /*[Header ("Line Render")]
     LineRenderer m_Line;
@@ -86,18 +90,22 @@ public class Player : MonoBehaviour
     }*/
     private void OnCollisionEnter(Collision collision)
     {
+        
         if (collision.gameObject.tag == "PlayerLine1")
         {
+            AudioManager.Instance.EnemyDie();
             m_Bot1.SetActive(false);
             m_BotLine1.SetActive(false);
         }
         if (collision.gameObject.tag == "PlayerLine2")
         {
+            AudioManager.Instance.EnemyDie();
             m_Bot2.SetActive(false);
             m_BotLine2.SetActive(false);
         }
         if (collision.gameObject.tag == "PlayerLine3")
         {
+            AudioManager.Instance.EnemyDie();
             m_Bot3.SetActive(false);
             m_BotLine3.SetActive(false);
         }

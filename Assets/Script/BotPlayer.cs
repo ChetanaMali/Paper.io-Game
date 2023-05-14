@@ -11,6 +11,8 @@ public class BotPlayer : MonoBehaviour
     public float walkPointRange;
     public LayerMask whatIsGround;
     [SerializeField] GameObject m_Player;
+    [SerializeField] GameObject m_PlayerLineRen, m_Pcylinder;
+    [SerializeField] GameObject textLoos;
 
     // Start is called before the first frame update
     void Start()
@@ -55,8 +57,12 @@ public class BotPlayer : MonoBehaviour
     {
         if(collision.gameObject.tag == "PlayerLine")
         {
+            AudioManager.Instance.PlayerDie();
             Debug.Log("Bot collider to player line");
             m_Player.SetActive(false);
+            m_Pcylinder.SetActive(false);
+            m_PlayerLineRen.SetActive(false);
+            textLoos.SetActive(true);
             //Destroy(m_Player);
         }
     }
